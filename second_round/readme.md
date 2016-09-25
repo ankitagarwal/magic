@@ -3,15 +3,14 @@
 as we divide all probabilities by evidence probabilities always. Let me know if you wanted those to be present as well.
 * Code has some hard coded implementation for this problem which can obviously be further worked upon,
 I ran out of time before I could make the api more generic.
-* Obviously there are many flavours of NB algorithm and I have implemented only one, this implementation
-can only deal with categorical data.
+* Obviously there are many flavours of NB algorithm and I have implemented only one, this implementation can only deal with categorical data.
 * Here is what am trying to do - 
-    Find all unique labels
-    Calculate prior probabilities for all labels
-    Calculate all evidence probabilities (optional)
-    calculate likelihoods of all features for all labels
-    Calculate class probabilities for given points using Baye's theorem using the above values
-    Return the predicted label as the label with highest class probability
+    * Find all unique labels
+    * Calculate prior probabilities for all labels
+    * Calculate all evidence probabilities (optional)
+    * calculate likelihoods of all features for all labels
+    * Calculate class probabilities for given points using Baye's theorem using the above values
+    * Return the predicted label as the label with highest class probability
 * For continuous variables Gaussian distributions seems to be the most common one recommended for Naive bayes, I did some
 research and found a Flexible Naive bayes algorithm that uses kernal density estimation instead of Gaussian. Based on my limited
 research it also seemed that it is not recommended to use other distributions such as t etc for Naive bayes. Can you explain what
@@ -36,12 +35,12 @@ I am simply using the first one. But again we can do more complex stuff here suc
 towards a prediction, contribute based on their weights which in turn is calculated based on their closeness
 to the predictor whose value needs to be predicted.
 * Approach -
-    For each xj  in test set -
-        for each xi in train set - 
-            calculate the k((xi -xj)/h)
-            calculate Weights Wi as per the formula
-            Calculate wi*yi
-        yj = sum of (wi * yi)
+    * For each xj  in test set -
+        * for each xi in train set - 
+            * calculate the k((xi -xj)/h)
+            * calculate Weights Wi as per the formula
+            * Calculate wi*yi
+       * yj = sum of (wi * yi)
 * For binary classification the sign of yj determines the label (+1, -1)
 * For regression yj belongs to R and is an estimate of Yj
             
