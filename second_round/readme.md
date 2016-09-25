@@ -44,11 +44,26 @@ to the predictor whose value needs to be predicted.
 * For binary classification the sign of yj determines the label (+1, -1)
 * For regression yj belongs to R and is an estimate of Yj
             
+** Problem 4 **
+* For KDE, the likelihood in the implementation was a single number.
+* For GMM, it is a bug in the library as I noted in the comment of the 
+code https://github.com/scikit-learn/scikit-learn/issues/7295 this is not yet
+available in scipy(based on various comments on stackoverflow)
+* For bandwidth we have rule of thumb that h = (4sig/3n)^(1/5)
+Where sig = variance of the sample data.
+* The value of h can be approximated as 1.06sign^(-1/5).
+* The bandwidth approximation assumes the density distribution is Gaussian.
+* Other methods also can be used to find appropriate bandwidth such as Cross validation, AIC, BIC
+* The code in second_round/p4.py visualizes the GMM model for 1, 2, 3 components for a randomly generated data set.
+* I have used covariance type as full since that is usually the best fit, however we can use diag if we want a compromise between
+performance and "best fit". This becomes more obvious for really high dimensions. Spherical GMM needs more components to cover data
+but is usually much faster then other two methods.
 
 ** General **
-* I have not used sklearn as you requested, however I did use pandas a bit for basic IO and array manipulation,
+* I have not used sklearn as you requested except in p4, however I did use pandas a bit for basic IO and array manipulation,
 I am guessing that is fine? Numpy sometimes gets tedious with complicated array manipulation.
 * I am guessing you are trying to see my understanding of various algorithms. I have also included,
-the implementation of Linear regression, Multi dimensional linear regression and Polynomial linear regression.
+the implementation of Linear regression, Multi dimensional linear regression and Polynomial linear regression that
+I wrote a couple of weeks ago. (Included in custom.py file)
 * Those implementations were written for some custom datasets so might have some hardcoded parameters,
 but still should be enough to explain the understanding of the algorithms.
